@@ -39,4 +39,6 @@ c) 1x(5x1).
 
 LISTA FEATURE'ÓW:
 1. Game board - (board 10x10)
-2. 
+
+
+test test
