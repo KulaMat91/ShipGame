@@ -4,7 +4,7 @@ Implement enum ShipType and it's methods.
 
     Enum ShipType represents ship types -
     Each ShipType has a unique length.
-    
+
     Do dyspozycji gracze mają najczęściej:
 
     Cztery jednomasztowce (czyli statki na jedną kratkę),
@@ -15,8 +15,8 @@ Implement enum ShipType and it's methods.
 
 public enum ShipType {
     BOAT(1, 4),
-    SAIL_BOAT(2,3),
-    SUBMARINE(3,2),
+    SAIL_BOAT(2, 3),
+    SUBMARINE(3, 2),
     BLACK_PEARL(4, 1),
     ;
 
@@ -28,10 +28,11 @@ public enum ShipType {
         this.number = number;
     }
 
-    public int getSize(){
+    public int getSize() {
         return size;
     }
-    public int getNumber(){
+
+    public int getNumber() {
         return number;
     }
 }
