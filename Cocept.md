@@ -38,5 +38,11 @@ c) 1x(5x1).
 
 
 LISTA FEATURE'ÓW:
-1. Game board - (board 10x10)
-2. 
+1. Game board - (board 10x10) - tworzenie pustej tablicy o podanych wymiarach, wypelnie tablicy znakiem, wyświetlanie tablicy
+   a) Player board - umieszczenie statków na tablicy w odpowiedni sposób, pokazanie strzałów przeciwnika 
+   b) Enemy board  - wyświetlenie strzałów gracza - komunikaty
+2. Player - przechowuje informacje o graczu (imię gracza), przechowuje tablicę player board, enemy board
+a) Player 1 - obiekt klasy Player
+b) Player 2 - obiekt klasy Player
+3. Ship - enum jeden rodzaj statku o polu 1x1 
+4. Game logic - przywitanie graczy, opis gry, wywietlanie tablicy, wybór miejsc położenia statków,  
