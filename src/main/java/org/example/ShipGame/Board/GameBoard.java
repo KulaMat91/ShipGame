@@ -1,4 +1,6 @@
-package org.example.ShipGame;
+package org.example.ShipGame.Board;
+
+import org.example.ShipGame.Ship.Ship;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -6,13 +8,6 @@ import java.util.Scanner;
 
 public class GameBoard {
     private Integer size;
-
-    private final Character WATER = '~';
-    private final Character WATER_BUT_SHIP_CANNOT_BE_DEPLOYED = '-';
-    private final Character SHIP = 's';
-    private final Character HITTED = 'x';
-    private final Character MISSED = 'o';
-
     private Character[][] gameField;
 
     public GameBoard(Integer size) {
@@ -35,7 +30,7 @@ public class GameBoard {
 
     public Character[][] createEmptyField() {
         for (Character[] characters : gameField) {
-            Arrays.fill(characters, WATER);
+            Arrays.fill(characters, Ship.ONE);
         }
         return this.gameField;
     }
