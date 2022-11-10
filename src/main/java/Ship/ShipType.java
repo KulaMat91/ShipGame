@@ -15,9 +15,9 @@ Implement enum ShipType and it's methods.
 
 public enum ShipType {
     BOAT(1, 4),
-    SAIL_BOAT(2, 3),
+    BLACK_PEARL(2, 3),
     SUBMARINE(3, 2),
-    BLACK_PEARL(4, 1),
+    TITANIC(4, 1),
     ;
 
     public final int length;
