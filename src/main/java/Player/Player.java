@@ -6,7 +6,6 @@ package Player;
  */
 
 import Ship.Ship;
-import Ship.ShipType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +41,7 @@ public class Player {
         enemyBoard.showBoard;
     }
 
-    public int sizerOfShip(List<Ship> ships){
+    public int sizeOfShip(List<Ship> ships){
         int size = 0;
         for(Ship ship : ships){
             size += ship.getShipType().length;
