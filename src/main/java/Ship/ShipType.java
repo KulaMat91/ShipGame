@@ -20,19 +20,23 @@ public enum ShipType {
     BLACK_PEARL(4, 1),
     ;
 
-    public final int size;
-    public final int number;
+    public final int length;
+    public int number;
 
-    ShipType(int size, int number) {
-        this.size = size;
+    ShipType(int length, int number) {
+        this.length = length;
         this.number = number;
     }
 
-    public int getSize() {
-        return size;
+    public int getLength() {
+        return length;
     }
 
     public int getNumber() {
         return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 }
