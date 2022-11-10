@@ -41,13 +41,6 @@ public class Player {
         enemyBoard.showBoard;
     }
 
-    public int sizeOfShip(List<Ship> ships){
-        int size = 0;
-        for(Ship ship : ships){
-            size += ship.getShipType().length;
-        }
-        return size;
-    }
 
 
 }

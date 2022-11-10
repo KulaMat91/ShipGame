@@ -11,7 +11,7 @@ public class Ship {
         this.shipType = shipType;
     }
 
-    public List<Square> getFields() {
+    public List<Square> getSquares() {
         return squares;
     }
 
@@ -19,9 +19,6 @@ public class Ship {
         return shipType;
     }
 
-    public void add(Square square) {
-        squares.add(square);
-    }
 
 
 }
