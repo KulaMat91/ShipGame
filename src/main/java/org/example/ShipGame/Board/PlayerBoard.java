@@ -1,7 +1,8 @@
 package org.example.ShipGame.Board;
 
-import org.example.ShipGame.Ship.Ship;
+import org.example.ShipGame.Ship.ShipType;
 import org.example.ShipGame.Ship.ShipList;
+import org.example.ShipGame.Square.SquareStatus;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,19 +23,19 @@ public class PlayerBoard extends Board {
         int y = coordinates[1] - 1;
         int orientation = coordinates[2];
 
-        if (this.gameField[x][y].equals(FieldStatus.WATER.getCharacter())) {
+        if (this.gameField[x][y].equals(SquareStatus.WATER.getCharacter())) {
             switch (orientation) {
                 case '1': // "1" - VERTICAL
                     if (shipSize + y <= size) { // tutaj dodać sprawdzenie czy następne kratki są '~'
                         for (int i = 0; i <= shipSize; i++) {
-                            this.gameField[x][y + i] = FieldStatus.SHIP.getCharacter();          // tutaj trzeba dodac "obrysowanie" statku '-'
+                            this.gameField[x][y + i] = SquareStatus.SHIP.getCharacter();          // tutaj trzeba dodac "obrysowanie" statku '-'
                         }
                         break;
                     }
                 case '2': // "2" - HORIZONTAL
                     if (shipSize + x <= size) {
                         for (int i = 0; i <= shipSize; i++) {
-                            this.gameField[x + i - 1][y - 1] = FieldStatus.SHIP.getCharacter();
+                            this.gameField[x + i - 1][y - 1] = SquareStatus.SHIP.getCharacter();
                         }
                         break;
                     }
@@ -50,7 +51,7 @@ public class PlayerBoard extends Board {
     }
 
     public Character[][] deployShips() {
-        List<Ship> shipsToDeploy = ShipList.getShips();
+        List<ShipType> shipsToDeploy = ShipList.getShips();
         while (!shipsToDeploy.isEmpty()) {
             System.out.printf("\nPodaj koordynaty początku statku + orientacje (V or H) dla %s ship\n", shipsToDeploy.get(0).name());
             Scanner scanner = new Scanner(System.in);

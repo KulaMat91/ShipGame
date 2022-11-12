@@ -1,6 +1,6 @@
 package org.example.ShipGame.Board;
 
-import org.example.ShipGame.Ship.Ship;
+import org.example.ShipGame.Ship.ShipType;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -30,12 +30,12 @@ public class GameBoard {
 
     public Character[][] createEmptyField() {
         for (Character[] characters : gameField) {
-            Arrays.fill(characters, Ship.ONE);
+            Arrays.fill(characters, ShipType.ONE);
         }
         return this.gameField;
     }
 
-    public Character[][] deployShips(LinkedList<Ship> shipsToDeploy) {
+    public Character[][] deployShips(LinkedList<ShipType> shipsToDeploy) {
         while (!shipsToDeploy.isEmpty()) {
             System.out.printf("\nPodaj koordynaty początku statku + orientacje (V or H) dla %s ship\n", shipsToDeploy.get(0).name());
             Scanner scanner = new Scanner(System.in);

@@ -1,16 +1,9 @@
 package org.example.ShipGame.Ship;
 
-public enum Ship {
-    ONE(1,4),
-    TWO(2,3),
-    THREE(3,2),
-    FOUR(4,1);
+import org.example.ShipGame.Square.Square;
 
-    public int shipSize;
-    public int amountOfAvailableShips;
+import java.util.List;
 
-    Ship(int shipSize, int amountOfAvailableShips) {
-        this.shipSize = shipSize;
-        this.amountOfAvailableShips = amountOfAvailableShips;
-    }
+public class Ship {
+private List<Square> shipSquares;
 }

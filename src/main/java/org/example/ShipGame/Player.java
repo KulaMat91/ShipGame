@@ -1,10 +1,6 @@
 package org.example.ShipGame;
 
 import org.example.ShipGame.Board.GameBoard;
-import org.example.ShipGame.Ship.Ship;
-
-import java.util.Arrays;
-import java.util.LinkedList;
 
 public class Player {
     private String name;

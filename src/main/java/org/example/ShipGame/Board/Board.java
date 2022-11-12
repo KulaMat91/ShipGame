@@ -1,10 +1,8 @@
 package org.example.ShipGame.Board;
 
-import org.example.ShipGame.Ship.Ship;
+import org.example.ShipGame.Square.SquareStatus;
 
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Scanner;
 
 public abstract class Board {
 
@@ -31,7 +29,7 @@ public abstract class Board {
 
         public Character[][] createEmptyField() {
             for (Character[] characters : gameField) {
-                Arrays.fill(characters, FieldStatus.WATER.getCharacter());
+                Arrays.fill(characters, SquareStatus.WATER.getCharacter());
             }
             return this.gameField;
         }
