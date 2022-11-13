@@ -2,10 +2,9 @@ package org.BattleShipGame.Square;
 
 public enum SquareStatus {
  WATER('~'),
-    TEST('-'),
- SHIP('s'),
- HITTED('x'),
- MISSED('o'),
+ SHIP('S'),
+ HIT('X'),
+ MISS('o'),
  SUNK('%');
 
  private Character character;

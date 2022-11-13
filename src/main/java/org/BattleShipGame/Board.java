@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Board {
     private Square[][] ocean;
     private int boardSize;
+    Display display = new Display();
 
     public Board(int boardSize) {
         this.boardSize = boardSize;
@@ -21,16 +22,12 @@ public class Board {
         }
     }
 
-    public void printTable() {
-        for (int i = 0; i <= boardSize; i++) {
-            System.out.print(i + "  ");
-        }
-        for (int rows = 1; rows <= boardSize; rows++) {
-            System.out.printf("\n%d  ", rows);
-            for (int columns = 0; columns < boardSize; columns++) {
-                System.out.print(ocean[rows - 1][columns].getSquareStatus() + "  ");
-            }
-        }
+    public int getBoardSize() {
+        return boardSize;
+    }
+
+    public Square[][] getOcean() {
+        return ocean;
     }
 
     public boolean checkIsPlacementOk(int[] coordinates, int shipSize) {
@@ -50,7 +47,7 @@ public class Board {
         } else {
             System.out.println("Another Yours ship is here, find different place!");
         }
-        this.printTable();
+        display.printBoard(this);
         return false;
     }
 
@@ -128,7 +125,7 @@ public class Board {
             }
 //            System.out.println("Another Yours ship is here, find different place!");
             System.out.println();
-            this.printTable();
+//            display.printBoard(this);
         }
         return this.ocean;
     }

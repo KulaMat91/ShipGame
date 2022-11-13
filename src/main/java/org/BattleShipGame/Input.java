@@ -22,16 +22,6 @@ public class Input {
         }
     }
 
-    public void getUserMenuSelection(String message, String messageIfIncorrectInput) {
-        switch (getInt(message)) {
-            case 1 -> display.printInformationAboutGame();
-            //case 2 -> game.startGame();
-            case 3 -> display.printExitGameInformation();
-            case 4 -> display.printInformationAboutAuthors();
-            default -> display.printMessage(messageIfIncorrectInput);
-        }
-    }
-
     public boolean verifyInput(String playerInput) {
         return playerInput.length() < 7 && playerInput.chars().filter(ch -> ch == ',').count() == 2;
     }

@@ -24,6 +24,7 @@ public class Player {
     public Player(String name) {
         this.name = name;
         this.playerBoard = new Board(10);
+        this.enemyBoard = new Board(10);
     }
 
     public String getName() {
