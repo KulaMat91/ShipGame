@@ -56,8 +56,8 @@ public class Board {
 
 
     public boolean checkIfIsFreeSpaceBetweenShips(int[] coordinates, int shipSize) {
-        int row = coordinates[1];
-        int column = coordinates[0];
+        int row = coordinates[0];
+        int column = coordinates[1];
         int orientation = coordinates[2];
         int counter = 0;
         switch (orientation) {
