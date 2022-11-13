@@ -1,7 +1,6 @@
-package org.example.ShipGame.Ship;
+package org.BattleShipGame.Ship;
 
 import java.util.LinkedList;
-import java.util.List;
 
 public class ShipList {
 

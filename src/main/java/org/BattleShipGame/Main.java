@@ -1,7 +1,6 @@
-package org.example.ShipGame;
+package org.BattleShipGame;
 
-import org.example.ShipGame.Board.Board;
-import org.example.ShipGame.Ship.ShipList;
+import org.BattleShipGame.Ship.ShipList;
 
 import java.util.Scanner;
 

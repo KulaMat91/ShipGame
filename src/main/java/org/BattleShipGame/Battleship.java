@@ -1,6 +1,6 @@
-package Battleship;
+package org.BattleShipGame;
 
-import Display.Display;
+import org.BattleShipGame.Display;
 
 import java.util.Scanner;
 

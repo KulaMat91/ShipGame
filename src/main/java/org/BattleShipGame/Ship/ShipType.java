@@ -1,4 +1,4 @@
-package org.example.ShipGame.Ship;
+package org.BattleShipGame.Ship;
 
 public enum ShipType {
     ONE(1,4),

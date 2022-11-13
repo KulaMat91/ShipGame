@@ -1,4 +1,4 @@
-package Display;
+package org.BattleShipGame;
 
 public class Display {
 

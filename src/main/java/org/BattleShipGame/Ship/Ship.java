@@ -1,6 +1,6 @@
-package org.example.ShipGame.Ship;
+package org.BattleShipGame.Ship;
 
-import org.example.ShipGame.Square.Square;
+import org.BattleShipGame.Square.Square;
 
 import java.util.List;
 

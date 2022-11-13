@@ -1,8 +1,8 @@
-package org.example.ShipGame.Board;
+package org.BattleShipGame;
 
-import org.example.ShipGame.Ship.ShipType;
-import org.example.ShipGame.Square.Square;
-import org.example.ShipGame.Square.SquareStatus;
+import org.BattleShipGame.Ship.ShipType;
+import org.BattleShipGame.Square.Square;
+import org.BattleShipGame.Square.SquareStatus;
 
 import java.util.LinkedList;
 import java.util.Scanner;

@@ -1,8 +1,5 @@
-package Input;
+package org.BattleShipGame;
 
-import Display.*;
-
-import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

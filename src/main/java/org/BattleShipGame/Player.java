@@ -1,11 +1,12 @@
-package Player;
+package org.BattleShipGame;
 /*
     Class Player has logic responsible for handling shot.
     Class Player has field of type List<ShipType>.
     Class Player has a method isAlive to check if player has not lost all ships and returns true or false accordingly.
  */
 
-import Ship.Ship;
+
+import org.BattleShipGame.Ship.Ship;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
-        this.playerBoard = new Board();
+        this.playerBoard = new Board(10);
     }
 
     public String getName() {
@@ -34,12 +35,12 @@ public class Player {
     }
 
     public void showPlayerBoard(Board playerBoard) {
-        playerBoard.showBoard;
+        //playerBoard.showBoard;
     }
 
-    public void showEnemyBoard(Board enemyBoard) {
-        enemyBoard.showBoard;
-    }
+//    public void showEnemyBoard(Board enemyBoard) {
+//        enemyBoard.showBoard;
+//    }
 
 
 
