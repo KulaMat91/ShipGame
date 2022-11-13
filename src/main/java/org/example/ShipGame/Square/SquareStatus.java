@@ -2,7 +2,7 @@ package org.example.ShipGame.Square;
 
 public enum SquareStatus {
  WATER('~'),
- WATER_BUT_SHIP_CANNOT_BE_DEPLOYED('-'),
+    TEST('-'),
  SHIP('s'),
  HITTED('x'),
  MISSED('o'),
