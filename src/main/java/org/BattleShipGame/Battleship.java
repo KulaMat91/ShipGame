@@ -1,13 +1,13 @@
-package Battleship;
+package org.BattleShipGame;
 
-import Display.Display;
+import org.BattleShipGame.Display;
 
 import java.util.Scanner;
 
 public class Battleship {
     private Display display;
 //    private Game game;
-//    private Input input;
+    private Input input;
 
     public Battleship(){
         display = new Display();

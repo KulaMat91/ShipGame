@@ -1,4 +1,6 @@
-package Display;
+package org.BattleShipGame;
+
+import org.BattleShipGame.Square.SquareStatus;
 
 public class Display {
 
@@ -60,13 +62,21 @@ public class Display {
                 "of the round, the game is a draw.");
     }
 
-//    public void printBoard(Board board){
-//
-//    }
+    public void printBoard(Board board){
+        for (int i = 0; i < board.getBoardSize(); i++) {
+            if (i == 0) {
+                System.out.print("    ");
+            }
+            System.out.print((char) (i + 65) + "  ");
 
-//    public void printGameplay(){
-//
-//    }
+        }
+        for (int rows = 1; rows <= board.getBoardSize(); rows++) {
+            System.out.printf("\n%2d  ", rows);
+            for (int columns = 0; columns < board.getBoardSize(); columns++) {
+                System.out.print(board.getOcean()[rows - 1][columns].getSquareStatus() + "  ");
+            }
+        }
+    }
 
     public void printInformationAboutAuthors(){
         System.out.println();
@@ -76,4 +86,18 @@ public class Display {
         System.out.println("Mateusz Kulinski - Java Developer");
         System.out.println("Filip Sokolowski - Java Developer");
     }
+
+    public void playerTurnInformation(Player player){
+        System.out.printf("Now it's %s turn!\n", player.getName());
+    }
+
+    public void shotResultInformation(SquareStatus squareStatus){
+        switch (squareStatus){
+            case HIT -> System.out.println("Ship has been hit!");
+            case MISS -> System.out.println("You missed!");
+            case SUNK -> System.out.println("Ship sunk!");
+            default -> System.out.println("Default message");
+        }
+    }
+
 }

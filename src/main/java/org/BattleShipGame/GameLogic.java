@@ -1,4 +1,4 @@
-package GameLogic;
+package org.BattleShipGame;
 
 public class GameLogic {
 }
