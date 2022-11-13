@@ -30,14 +30,14 @@ public class Board {
         return ocean;
     }
 
-    public boolean checkIsPlacementOk(int[] coordinates, int shipSize) {
+    public boolean checkIsPlacementOk(Integer[] coordinates, int shipSize) {
         if (this.ocean[coordinates[0]][coordinates[1]].getSquareStatus() == SquareStatus.WATER) {
             switch (coordinates[2]) {
                 case 1: // HORIZONTAL
                     if (shipSize + coordinates[0] <= boardSize && checkIfIsFreeSpaceBetweenShips(coordinates, shipSize)) { // było zamienione
                         return true;
                     }
-                case 2: // VERTICAL
+                case 0: // VERTICAL
                     if (shipSize + coordinates[1] <= boardSize && checkIfIsFreeSpaceBetweenShips(coordinates, shipSize)) {
                         return true;
                     }
@@ -47,12 +47,12 @@ public class Board {
         } else {
             System.out.println("Another Yours ship is here, find different place!");
         }
-        display.printBoard(this);
+        Display.printBoard(this);
         return false;
     }
 
-
-    public boolean checkIfIsFreeSpaceBetweenShips(int[] coordinates, int shipSize) {
+    //TODO check why crashing at 10,J,H then fix : )
+    public boolean checkIfIsFreeSpaceBetweenShips(Integer[] coordinates, int shipSize) {
         int row = coordinates[0];
         int column = coordinates[1];
         int orientation = coordinates[2];
@@ -73,7 +73,7 @@ public class Board {
                     }
                 }
                 break;
-            case 2: // VERTICAL
+            case 0: // VERTICAL
                 for (int k = 0; k < shipSize + 2; k++) {
                     for (int i = 0; i < 3; i++) {
                         int xPrim = row - 1 + k;
@@ -97,35 +97,30 @@ public class Board {
 
     public Square[][] deployShips(LinkedList<ShipType> shipsToDeploy) {
         while (!shipsToDeploy.isEmpty()) {
-            System.out.printf("\nPodaj koordynaty początku statku + orientacje (1 v or 2 h) dla %s ship\n", shipsToDeploy.get(0).name());
-            Scanner scanner = new Scanner(System.in);
-            int x = scanner.nextInt() - 1; // zmienic na coordinates [0]
-            int y = scanner.nextInt() - 1; // zmienic na coordinates [0]
-            int orientation = scanner.nextInt();
-            int[] arr = {x, y, orientation}; // temporary
-            if (checkIsPlacementOk(arr, shipsToDeploy.get(0).shipSize)) {
-                switch (orientation) {
+            Integer[] coordinates = Input.getCoordinates(shipsToDeploy.get(0));
+            if (checkIsPlacementOk(coordinates, shipsToDeploy.get(0).shipSize)) {
+                switch (coordinates[2]) {
                     case 1: // HORIZONTAL
                         for (int i = 0; i < shipsToDeploy.get(0).shipSize; i++) {
-                            this.ocean[x][y + i].setSquareStatus(SquareStatus.SHIP);
+                            this.ocean[coordinates[0]][coordinates[1] + i].setSquareStatus(SquareStatus.SHIP);
                         }
                         // PLAYER.shipList.add
                         shipsToDeploy.remove(0);
                         break;
-                    case 2: // VERTICAL
+                    case 0: // VERTICAL
                         for (int i = 0; i < shipsToDeploy.get(0).shipSize; i++) {
-                            this.ocean[x + i][y].setSquareStatus(SquareStatus.SHIP);
+                            this.ocean[coordinates[0] + i][coordinates[1]].setSquareStatus(SquareStatus.SHIP);
                         }
                         shipsToDeploy.remove(0);
                         break;
                     default:
-                        System.out.println("Input invalid");
+                        Display.printMessage("Invalid input");
                         break;
                 }
             }
 //            System.out.println("Another Yours ship is here, find different place!");
             System.out.println();
-//            display.printBoard(this);
+            Display.printBoard(this);
         }
         return this.ocean;
     }

@@ -7,6 +7,8 @@ package org.BattleShipGame;
 
 
 import org.BattleShipGame.Ship.Ship;
+import org.BattleShipGame.Square.Square;
+import org.BattleShipGame.Square.SquareStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,13 +38,24 @@ public class Player {
     }
 
     public void showPlayerBoard(Board playerBoard) {
-        //playerBoard.showBoard;
+        Display.printBoard(playerBoard);
     }
 
-//    public void showEnemyBoard(Board enemyBoard) {
-//        enemyBoard.showBoard;
-//    }
+    public void showEnemyBoard(Board enemyBoard) {
+        Display.printBoard(enemyBoard);
+    }
 
+    public Boolean isPlayerAlive() {
+        for (Square[] squareArray : playerBoard.getOcean()) {
+            for (Square square : squareArray) {
+                if (square.getSquareStatus().equals(SquareStatus.SHIP)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
+    //TODO handling shot
 
 }

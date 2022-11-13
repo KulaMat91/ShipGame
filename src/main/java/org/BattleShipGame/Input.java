@@ -1,32 +1,33 @@
 package org.BattleShipGame;
 
+import org.BattleShipGame.Ship.ShipType;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
 
-    private Scanner scanner = new Scanner(System.in);
-    private Display display = new Display();
+    private static Scanner scanner = new Scanner(System.in);
 
-    public String getString(String message) {
-        display.printMessage(message);
+    public static String getString(String message) {
+        Display.printMessage(message);
         return scanner.next();
     }
 
-    public Integer getInt(String message) {
-        display.printMessage(message);
+    public static Integer getInt(String message) {
+        Display.printMessage(message);
         try {
             return scanner.nextInt();
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             return getInt("Provided Value is incorrect, please try again: ");
         }
     }
 
-    public boolean verifyInput(String playerInput) {
+    public static boolean verifyInput(String playerInput) {
         return playerInput.length() < 7 && playerInput.chars().filter(ch -> ch == ',').count() == 2;
     }
 
-    public Integer[] convertInputToCoordinates(String playerInput) throws IllegalArgumentException {
+    private static Integer[] convertInputToCoordinates(String playerInput) throws IllegalArgumentException {
         Integer[] convertedInput = new Integer[3];
         String[] splitPlayerInput = playerInput.split(",");
         for (int i = 0; i < convertedInput.length; i++) {
@@ -38,7 +39,7 @@ public class Input {
             switch (i) {
                 case 0:
                     if (checkFirstCoordinate(splitPlayerInput[i])) {
-                        convertedInput[i] = Integer.parseInt(splitPlayerInput[i]);
+                        convertedInput[i] = Integer.parseInt(splitPlayerInput[i]) - 1;
                     } else {
                         throw new IllegalArgumentException();
                     }
@@ -58,13 +59,13 @@ public class Input {
                     }
                     break;
                 default:
-                    display.printMessage("Converted Array is longer than 3, which is not possible");
+                    Display.printMessage("Converted Array is longer than 3, which is not possible");
             }
         }
         return convertedInput;
     }
 
-    private boolean checkFirstCoordinate(String string) {
+    private static boolean checkFirstCoordinate(String string) {
         try {
             Integer.parseInt(string);
             return true;
@@ -74,18 +75,34 @@ public class Input {
     }
 
     //try to convert String to char and check if it's in range : A -> 65... Z -> 90
-    private boolean checkSecondCoordinate(String string) {
+    private static boolean checkSecondCoordinate(String string) {
         return Character.isLetter(string.charAt(0)) && (int) string.charAt(0) > 64 && (int) string.charAt(0) < 91;
     }
 
-    private boolean checkOrientation(String string) {
+    private static boolean checkOrientation(String string) {
         return string.equals("H") || string.equals("V");
     }
 
-    private Integer convertOrientationToInt(String string) {
+    private static Integer convertOrientationToInt(String string) {
         return switch (string.toUpperCase()) {
             case "V" -> 0;
             default -> 1;
         };
+    }
+
+    public static Integer[] getCoordinates(ShipType shipType) {
+        String coordinates = getString("\nInsert coordinates for " + shipType.toString() + " in (XX,Y,Orientation) format where: " +
+                "\n- X is in 1-10 range" +
+                "\n- Y is in A-J range" +
+                "\n- Orienataion (H)orizontal, (V)ertical");
+        if (verifyInput(coordinates)) {
+            return convertInputToCoordinates(coordinates);
+        }
+        return null;
+    }
+
+    //TODO Get Shot coordinates XX,Y
+    public static Integer[] getShotCoordinates(){
+        return null;
     }
 }

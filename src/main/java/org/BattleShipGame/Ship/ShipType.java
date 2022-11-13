@@ -1,7 +1,7 @@
 package org.BattleShipGame.Ship;
 
 public enum ShipType {
-    ONE(1,4),
+    ONE(1,0),
     TWO(2,3),
     THREE(3,2),
     FOUR(4,1);

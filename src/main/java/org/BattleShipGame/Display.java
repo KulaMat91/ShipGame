@@ -5,7 +5,7 @@ import org.BattleShipGame.Square.SquareStatus;
 public class Display {
 
 
-    public void printStartLabel() {
+    public static void printStartLabel() {
         System.out.println();
         System.out.println("\t\tHELLO IN BATTLESHIP GAME!");
         System.out.println("\n" + "                          )___(\n" +
@@ -18,7 +18,7 @@ public class Display {
                 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
-    public void printMenuOptions() {
+    public static void printMenuOptions() {
         System.out.println();
         System.out.println("MENU: ");
         System.out.println("1 - Information about game");
@@ -27,15 +27,15 @@ public class Display {
         System.out.println("4 - Information about game authors");
     }
 
-    public void printMessage(String message) {
+    public static void printMessage(String message) {
         System.out.println(message);
     }
 
-    public void printExitGameInformation() {
+    public static void printExitGameInformation() {
         System.out.println("Thank you and see you next time!");
     }
 
-    public void printInformationAboutGame() {
+    public static void printInformationAboutGame() {
         System.out.println();
         System.out.println("RULES:");
         System.out.println("The game is played on four grids, two for each player. The grids are typically square - " +
@@ -62,7 +62,7 @@ public class Display {
                 "of the round, the game is a draw.");
     }
 
-    public void printBoard(Board board) {
+    public static void printBoard(Board board) {
         for (int i = 0; i < board.getBoardSize(); i++) {
             if (i == 0) {
                 System.out.print("    ");
@@ -78,7 +78,7 @@ public class Display {
         }
     }
 
-    public void printInformationAboutAuthors() {
+    public static void printInformationAboutAuthors() {
         System.out.println();
         System.out.println("AUTHORS: ");
         System.out.println("Marcin Majewski - Java Developer");
@@ -87,11 +87,11 @@ public class Display {
         System.out.println("Filip Sokolowski - Java Developer");
     }
 
-    public void playerTurnInformation(Player player) {
+    public static void playerTurnInformation(Player player) {
         System.out.printf("Now it's %s turn!\n", player.getName());
     }
 
-    public void shotResultInformation(SquareStatus squareStatus) {
+    public static void shotResultInformation(SquareStatus squareStatus) {
         switch (squareStatus) {
             case HIT -> System.out.println("Ship has been hit!");
             case MISS -> System.out.println("You missed!");
@@ -99,11 +99,11 @@ public class Display {
         }
     }
 
-    public void printSunkStatus() {
+    public static void printSunkStatus() {
         System.out.println("You destroyed the ship!");
     }
 
-    public void printWinner(Player player) {
+    public static void printWinner(Player player) {
         System.out.printf("Player %s won the game!", player.getName());
     }
 
