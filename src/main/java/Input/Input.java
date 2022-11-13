@@ -3,6 +3,7 @@ package Input;
 import Display.*;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
@@ -17,7 +18,11 @@ public class Input {
 
     public Integer getInt(String message) {
         display.printMessage(message);
-        return scanner.nextInt();
+        try {
+            return scanner.nextInt();
+        } catch (InputMismatchException e){
+            return getInt("Provided Value is incorrect, please try again: ");
+        }
     }
 
     public void getUserMenuSelection(String message, String messageIfIncorrectInput) {
@@ -37,7 +42,6 @@ public class Input {
     public Integer[] convertInputToCoordinates(String playerInput) throws IllegalArgumentException {
         Integer[] convertedInput = new Integer[3];
         String[] splitPlayerInput = playerInput.split(",");
-        System.out.println(Arrays.toString(splitPlayerInput));
         for (int i = 0; i < convertedInput.length; i++) {
             /*
             1.X coordinate (convert String that contains int to integer)
