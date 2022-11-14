@@ -56,6 +56,12 @@ public class Player {
         return false;
     }
 
-    //TODO handling shot
-
+    public Boolean shootingCheckIfHit(Board enemyBoard){
+        Integer[] shotCoordinates = Input.getShotCoordinates();
+        if (enemyBoard.getOcean()[shotCoordinates[0]][shotCoordinates[1]].equals(SquareStatus.SHIP)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

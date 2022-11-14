@@ -110,7 +110,6 @@ public class Input {
         return null;
     }
 
-    //TODO Get Shot coordinates XX,Y
     public static Integer[] getShotCoordinates() {
         String shotCoordinates = getString("Where you wanna shot? Insert coordinates in \"XX,Y\" format");
         if (verifyInput(shotCoordinates, PlayerAction.SHOT)) {
