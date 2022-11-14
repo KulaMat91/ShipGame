@@ -23,12 +23,21 @@ public class Input {
         }
     }
 
-    public static boolean verifyInput(String playerInput) {
-        return playerInput.length() < 7 && playerInput.chars().filter(ch -> ch == ',').count() == 2;
+    public static boolean verifyInput(String playerInput, PlayerAction playerAction) {
+        if (playerAction.equals(PlayerAction.SHOT)) {
+            return playerInput.length() < 4 && playerInput.chars().filter(ch -> ch == ',').count() == 1;
+        } else if (playerAction.equals(PlayerAction.PLACEMENT)) {
+            return playerInput.length() < 7 && playerInput.chars().filter(ch -> ch == ',').count() == 2;
+        }
+        return false;
     }
 
-    private static Integer[] convertInputToCoordinates(String playerInput) throws IllegalArgumentException {
-        Integer[] convertedInput = new Integer[3];
+    private static Integer[] convertInputToCoordinates(String playerInput, PlayerAction playerAction) throws IllegalArgumentException {
+        Integer inputArrayLength = switch (playerAction) {
+            case SHOT -> 2;
+            case PLACEMENT -> 3;
+        };
+        Integer[] convertedInput = new Integer[inputArrayLength];
         String[] splitPlayerInput = playerInput.split(",");
         for (int i = 0; i < convertedInput.length; i++) {
             /*
@@ -59,7 +68,7 @@ public class Input {
                     }
                     break;
                 default:
-                    Display.printMessage("Converted Array is longer than 3, which is not possible");
+                    Display.printMessage("Converted Array is longer than 3, which is not possible for now");
             }
         }
         return convertedInput;
@@ -91,18 +100,22 @@ public class Input {
     }
 
     public static Integer[] getCoordinates(ShipType shipType) {
-        String coordinates = getString("\nInsert coordinates for " + shipType.toString() + " in (XX,Y,Orientation) format where: " +
+        String coordinates = getString("\nInsert coordinates for " + shipType.toString() + " in \"XX,Y,Orientation\" format where: " +
                 "\n- X is in 1-10 range" +
                 "\n- Y is in A-J range" +
                 "\n- Orienataion (H)orizontal, (V)ertical");
-        if (verifyInput(coordinates)) {
-            return convertInputToCoordinates(coordinates);
+        if (verifyInput(coordinates, PlayerAction.PLACEMENT)) {
+            return convertInputToCoordinates(coordinates, PlayerAction.PLACEMENT);
         }
         return null;
     }
 
     //TODO Get Shot coordinates XX,Y
-    public static Integer[] getShotCoordinates(){
+    public static Integer[] getShotCoordinates() {
+        String shotCoordinates = getString("Where you wanna shot? Insert coordinates in \"XX,Y\" format");
+        if (verifyInput(shotCoordinates, PlayerAction.SHOT)) {
+            return convertInputToCoordinates(shotCoordinates, PlayerAction.SHOT);
+        }
         return null;
     }
 }
