@@ -35,7 +35,7 @@ public class Input {
     private static Integer[] convertInputToCoordinates(String playerInput, PlayerAction playerAction) throws IllegalArgumentException {
         Integer inputArrayLength = switch (playerAction) {
             case SHOT -> 2;
-            case PLACEMENT -> 3;
+            default -> 3;
         };
         Integer[] convertedInput = new Integer[inputArrayLength];
         String[] splitPlayerInput = playerInput.split(",");
@@ -111,7 +111,7 @@ public class Input {
     }
 
     public static Integer[] getShotCoordinates() {
-        String shotCoordinates = getString("Where you wanna shot? Insert coordinates in \"XX,Y\" format");
+        String shotCoordinates = getString("\nWhere you wanna shot? Insert coordinates in \"XX,Y\" format");
         if (verifyInput(shotCoordinates, PlayerAction.SHOT)) {
             return convertInputToCoordinates(shotCoordinates, PlayerAction.SHOT);
         }

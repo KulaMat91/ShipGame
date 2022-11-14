@@ -13,7 +13,7 @@ import org.BattleShipGame.Square.SquareStatus;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
+public class Player implements Cloneable{
 
     private final String name;
 
@@ -25,7 +25,6 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
-        this.playerBoard = new Board(10);
         this.enemyBoard = new Board(10);
     }
 
@@ -35,6 +34,10 @@ public class Player {
 
     public Board getPlayerBoard() {
         return playerBoard;
+    }
+
+    public void setPlayerBoard(Board playerBoard) {
+        this.playerBoard = playerBoard;
     }
 
     public void showPlayerBoard(Board playerBoard) {
@@ -56,9 +59,10 @@ public class Player {
         return false;
     }
 
-    public Boolean shootingCheckIfHit(Board enemyBoard){
+    public Boolean shotCheckIfHit(Board enemyBoard){
         Integer[] shotCoordinates = Input.getShotCoordinates();
-        if (enemyBoard.getOcean()[shotCoordinates[0]][shotCoordinates[1]].equals(SquareStatus.SHIP)){
+        if (enemyBoard.getOcean()[shotCoordinates[0]][shotCoordinates[1]]
+                .getSquareStatus().getCharacter().equals(SquareStatus.SHIP.getCharacter())){
             return true;
         } else {
             return false;

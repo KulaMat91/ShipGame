@@ -107,5 +107,7 @@ public class Display {
         System.out.printf("Player %s won the game!", player.getName());
     }
 
-
+    public static String getPlayerNameFromInput(){
+        return Input.getString("Jak się nazywasz?");
+    }
 }

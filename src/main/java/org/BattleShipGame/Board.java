@@ -22,6 +22,11 @@ public class Board {
         }
     }
 
+    public Board(Board board){
+        this.boardSize = board.boardSize;
+        this.ocean = board.getOcean();
+    }
+
     public int getBoardSize() {
         return boardSize;
     }

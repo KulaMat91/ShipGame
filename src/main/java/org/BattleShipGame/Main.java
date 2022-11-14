@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Player player1 = new Player("Karol");
         Board board = new Board(10);
-        Scanner scanner  = new Scanner(System.in);
         board.deployShips(ShipList.getShips());
 //        for (;;){
 //            System.out.println();
