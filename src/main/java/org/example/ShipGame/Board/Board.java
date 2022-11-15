@@ -66,7 +66,7 @@ public class Board {
                     for (int i = 0; i < shipSize + 2; i++) {
                         int xPrim = row - 1 + l;
                         int yPrim = column + i - 1;
-                        boolean outOfBounds = (yPrim < 0) || (yPrim > boardSize) || (xPrim < 0) || (xPrim > boardSize);
+                        boolean outOfBounds = (yPrim < 0) || (yPrim >= boardSize) || (xPrim < 0) || (xPrim >= boardSize);
                         if (outOfBounds || this.ocean[xPrim][yPrim].getSquareStatus().equals(SquareStatus.WATER)) {
 //                            if (!outOfBounds) {
 //                                this.ocean[xPrim][yPrim].setSquareStatus(SquareStatus.TEST);
