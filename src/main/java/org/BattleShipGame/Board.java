@@ -34,7 +34,7 @@ public class Board {
         if (this.ocean[coordinates[0]][coordinates[1]].getSquareStatus() == SquareStatus.WATER) {
             switch (coordinates[2]) {
                 case 1: // HORIZONTAL
-                    if (shipSize + coordinates[0] <= boardSize && checkIfIsFreeSpaceBetweenShips(coordinates, shipSize)) { // było zamienione
+                    if (shipSize + coordinates[0] <= boardSize && checkIfIsFreeSpaceBetweenShips(coordinates, shipSize)) {
                         return true;
                     }
                 case 0: // VERTICAL
@@ -51,7 +51,6 @@ public class Board {
         return false;
     }
 
-    //TODO check why crashing at 10,J,H then fix : )
     public boolean checkIfIsFreeSpaceBetweenShips(Integer[] coordinates, int shipSize) {
         int row = coordinates[0];
         int column = coordinates[1];
@@ -78,11 +77,8 @@ public class Board {
                     for (int i = 0; i < 3; i++) {
                         int xPrim = row - 1 + k;
                         int yPrim = column + i - 1;
-                        boolean outOfBounds = (yPrim < 0) || (yPrim > boardSize) || (xPrim < 0) || (xPrim > boardSize);
+                        boolean outOfBounds = (yPrim < 0) || (yPrim >= boardSize) || (xPrim < 0) || (xPrim >= boardSize);
                         if (outOfBounds || this.ocean[xPrim][yPrim].getSquareStatus().equals(SquareStatus.WATER)) {
-//                            if (!outOfBounds) {
-//                                this.ocean[xPrim][yPrim].setSquareStatus(SquareStatus.TEST);
-//                            }
                             counter++;
                         }
                     }
@@ -118,7 +114,6 @@ public class Board {
                         break;
                 }
             }
-//            System.out.println("Another Yours ship is here, find different place!");
             System.out.println();
             Display.printBoard(this);
         }
