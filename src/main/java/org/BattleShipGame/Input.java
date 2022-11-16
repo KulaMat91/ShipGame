@@ -55,7 +55,7 @@ public class Input {
                     break;
                 case 1:
                     if (checkSecondCoordinate(splitPlayerInput[i])) {
-                        convertedInput[i] = (int) splitPlayerInput[i].charAt(0) - 65;
+                        convertedInput[i] = (int) splitPlayerInput[i].toUpperCase().charAt(0) - 65;
                     } else {
                         throw new IllegalArgumentException();
                     }

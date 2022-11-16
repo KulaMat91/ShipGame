@@ -106,8 +106,9 @@ public class Board {
                     case 1: // HORIZONTAL
                         for (int i = 0; i < shipsToDeploy.get(0).shipSize; i++) {
                             this.ocean[coordinates[0]][coordinates[1] + i].setSquareStatus(SquareStatus.SHIP);
-                            Square square = new Square(coordinates[0] + 0, coordinates[1] + i, SquareStatus.SHIP);
-                            ship.setShipSquare(square);
+                            Square square = new Square(coordinates[0], coordinates[1] + i);
+                            square.setSquareStatus(SquareStatus.SHIP);
+                            ship.setShipSquare(square); //TODO fix null pointer exception
                         }
                         shipsToDeploy.remove(0);
                         break;
