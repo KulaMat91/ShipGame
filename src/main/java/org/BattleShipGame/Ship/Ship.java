@@ -3,11 +3,17 @@ package org.BattleShipGame.Ship;
 import org.BattleShipGame.Square.Square;
 import org.BattleShipGame.Square.SquareStatus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Ship {
 private List<Square> shipSquares; //TODO przypisywanie pól do Shipa w momencie ustawiania na boardzie
-    //zwracanie statku w momencie trafienia w jakiekolwiek jego pole done
+    //zwracanie statku w momencie  trafienia w jakiekolwiek jego pole done
+
+    public Ship() {
+        shipSquares = new ArrayList<>();
+    }
+
     public Ship getShipSquaresByCoordinates(Integer[] coordinates){
         for (Square square: shipSquares) {
             if (square.getSquareCoordinates().equals(coordinates)){

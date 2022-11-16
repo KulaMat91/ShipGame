@@ -106,15 +106,14 @@ public class Board {
                     case 1: // HORIZONTAL
                         for (int i = 0; i < shipsToDeploy.get(0).shipSize; i++) {
                             this.ocean[coordinates[0]][coordinates[1] + i].setSquareStatus(SquareStatus.SHIP);
-                            Square square = new Square(coordinates[0] + 0, coordinates[1] + i, SquareStatus.SHIP);
-                            ship.setShipSquare(square);
+                            ship.setShipSquare(new Square(coordinates[0], coordinates[1] + i, SquareStatus.SHIP));
                         }
                         shipsToDeploy.remove(0);
                         break;
                     case 0: // VERTICAL
                         for (int i = 0; i < shipsToDeploy.get(0).shipSize; i++) {
                             this.ocean[coordinates[0] + i][coordinates[1]].setSquareStatus(SquareStatus.SHIP);
-                            ship.setShipSquare(new Square(coordinates[0] + i, coordinates[1] + 0, SquareStatus.SHIP));
+                            ship.setShipSquare(new Square(coordinates[0] + i, coordinates[1], SquareStatus.SHIP));
                         }
                         shipsToDeploy.remove(0);
                         break;
