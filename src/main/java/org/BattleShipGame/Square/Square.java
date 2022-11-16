@@ -18,4 +18,8 @@ public class Square {
     public void setSquareStatus(SquareStatus squareStatus) {
         this.squareStatus = squareStatus;
     }
+
+    public Integer[] getSquareCoordinates(){
+        return new Integer[]{x , y};
+    }
 }
