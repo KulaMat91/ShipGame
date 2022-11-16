@@ -1,11 +1,12 @@
 package org.BattleShipGame.Square;
 
 public class Square {
-    private int x;
-    private int y;
+    private Integer x;
+
+    private Integer y;
     private SquareStatus squareStatus;
 
-    public Square(int x, int y, SquareStatus squareStatus) {
+    public Square(Integer x, Integer y, SquareStatus squareStatus) {
         this.x = x;
         this.y = y;
         this.squareStatus = squareStatus;
@@ -21,5 +22,10 @@ public class Square {
 
     public Integer[] getSquareCoordinates(){
         return new Integer[]{x , y};
+    }
+
+    @Override
+    public String toString() {
+        return x + " " + y + " " + squareStatus.toString();
     }
 }

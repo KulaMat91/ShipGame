@@ -7,19 +7,18 @@ package org.BattleShipGame;
 
 
 import org.BattleShipGame.Ship.Ship;
+import org.BattleShipGame.Ship.ShipList;
 import org.BattleShipGame.Square.Square;
 import org.BattleShipGame.Square.SquareStatus;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player implements Cloneable{
+public class Player implements Cloneable {
 
     private final String name;
-
     private Board playerBoard;
     private Board enemyBoard;
-
     private List<Ship> listOfShips = new ArrayList<>();
 
 
@@ -34,6 +33,10 @@ public class Player implements Cloneable{
 
     public Board getPlayerBoard() {
         return playerBoard;
+    }
+
+    public void addShipToPlayerList(Ship ship) {
+        listOfShips.add(ship);
     }
 
     public void setPlayerBoard(Board playerBoard) {
@@ -59,13 +62,21 @@ public class Player implements Cloneable{
         return false;
     }
 
-    public Boolean shotCheckIfHit(Board enemyBoard){
+    public Boolean shotCheckIfHit(Board enemyBoard) {
         Integer[] shotCoordinates = Input.getShotCoordinates();
         if (enemyBoard.getOcean()[shotCoordinates[0]][shotCoordinates[1]]
-                .getSquareStatus().getCharacter().equals(SquareStatus.SHIP.getCharacter())){
+                .getSquareStatus().getCharacter().equals(SquareStatus.SHIP.getCharacter())) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public void addListOfShips() {
+        this.listOfShips = this.playerBoard.deployShips(ShipList.getShips());
+    }
+
+    public List<Ship> getListOfShips() {
+        return listOfShips;
     }
 }

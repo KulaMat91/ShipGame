@@ -1,10 +1,10 @@
 package org.BattleShipGame.Ship;
 
 public enum ShipType {
-    ONE(1,0),
-    TWO(2,1),
+    ONE(1,2),
+    TWO(2,2),
     THREE(3,0),
-    FOUR(4,0);
+    FOUR(4,1);
 
     public int shipSize;
     public int amountOfAvailableShips;

@@ -37,4 +37,11 @@ private List<Square> shipSquares; //TODO przypisywanie pól do Shipa w momencie 
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Ship{" +
+                "shipSquares=" + shipSquares +
+                '}';
+    }
 }

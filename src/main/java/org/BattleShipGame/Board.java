@@ -1,10 +1,13 @@
 package org.BattleShipGame;
 
+import org.BattleShipGame.Ship.Ship;
 import org.BattleShipGame.Ship.ShipType;
 import org.BattleShipGame.Square.Square;
 import org.BattleShipGame.Square.SquareStatus;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Board {
@@ -22,7 +25,7 @@ public class Board {
         }
     }
 
-    public Board(Board board){
+    public Board(Board board) {
         this.boardSize = board.boardSize;
         this.ocean = board.getOcean();
     }
@@ -69,9 +72,6 @@ public class Board {
                         int yPrim = column + i - 1;
                         boolean outOfBounds = (yPrim < 0) || (yPrim >= boardSize) || (xPrim < 0) || (xPrim >= boardSize);
                         if (outOfBounds || this.ocean[xPrim][yPrim].getSquareStatus().equals(SquareStatus.WATER)) {
-//                            if (!outOfBounds) {
-//                                this.ocean[xPrim][yPrim].setSquareStatus(SquareStatus.TEST);
-//                            }
                             counter++;
                         }
                     }
@@ -96,21 +96,25 @@ public class Board {
         return counter == (3 * (shipSize + 2));
     }
 
-    public Square[][] deployShips(LinkedList<ShipType> shipsToDeploy) {
+    public List<Ship> deployShips(LinkedList<ShipType> shipsToDeploy) {
+        List<Ship> listOfShips = new ArrayList<>();
         while (!shipsToDeploy.isEmpty()) {
             Integer[] coordinates = Input.getCoordinates(shipsToDeploy.get(0));
             if (checkIsPlacementOk(coordinates, shipsToDeploy.get(0).shipSize)) {
+                Ship ship = new Ship();
                 switch (coordinates[2]) {
                     case 1: // HORIZONTAL
                         for (int i = 0; i < shipsToDeploy.get(0).shipSize; i++) {
                             this.ocean[coordinates[0]][coordinates[1] + i].setSquareStatus(SquareStatus.SHIP);
+                            Square square = new Square(coordinates[0] + 0, coordinates[1] + i, SquareStatus.SHIP);
+                            ship.setShipSquare(square);
                         }
-                        // PLAYER.shipList.add
                         shipsToDeploy.remove(0);
                         break;
                     case 0: // VERTICAL
                         for (int i = 0; i < shipsToDeploy.get(0).shipSize; i++) {
                             this.ocean[coordinates[0] + i][coordinates[1]].setSquareStatus(SquareStatus.SHIP);
+                            ship.setShipSquare(new Square(coordinates[0] + i, coordinates[1] + 0, SquareStatus.SHIP));
                         }
                         shipsToDeploy.remove(0);
                         break;
@@ -118,11 +122,15 @@ public class Board {
                         Display.printMessage("Invalid input");
                         break;
                 }
+                if (!ship.equals(null)) {
+                    listOfShips.add(ship);
+                }
             }
             System.out.println();
             Display.printBoard(this);
+
         }
-        return this.ocean;
+        return listOfShips;
     }
 }
 

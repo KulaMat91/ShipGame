@@ -35,4 +35,13 @@ public class Game {
 
     }
 
+    public static void testGame(){
+        Player player1 = new Player(Input.getString("Insert Player 1 name: "));
+        Board player1Board = new Board(10);
+        player1.setPlayerBoard(player1Board);
+        player1.addListOfShips();
+        System.out.println(player1.getPlayerBoard());
+        System.out.println(player1.getListOfShips());
+    }
+
 }
