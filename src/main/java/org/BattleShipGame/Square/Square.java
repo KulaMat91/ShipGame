@@ -12,6 +12,11 @@ public class Square {
         this.squareStatus = squareStatus;
     }
 
+    public Square(Integer x, Integer y) {
+        this.x = x;
+        this.y = y;
+    }
+
     public SquareStatus getSquareStatus() {
         return squareStatus;
     }
