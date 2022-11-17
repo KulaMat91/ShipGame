@@ -1,6 +1,8 @@
 package org.BattleShipGame;
 
+import org.BattleShipGame.Ship.Ship;
 import org.BattleShipGame.Ship.ShipList;
+import org.BattleShipGame.Square.SquareStatus;
 
 public class Game {
 
@@ -35,13 +37,36 @@ public class Game {
 
     }
 
-    public static void testGame(){
+    public static void testGame() {
         Player player1 = new Player(Input.getString("Insert Player 1 name: "));
         Board player1Board = new Board(10);
         player1.setPlayerBoard(player1Board);
         player1.addListOfShips();
         System.out.println(player1.getPlayerBoard());
-        System.out.println(player1.getListOfShips());
     }
 
+    public static void shootingPhase(Player player) {
+        Integer[] tempCoordinates = Input.getShotCoordinates();
+        if (player.shotCheckIfHit(tempCoordinates)) {
+            // player enemyBoard
+            // player getEnemy getPlayerBoard getOcean[][] = character of hit
+            // player getEnemy getListOfShips. // osobna metoda
+            for (Ship ship : player.getEnemy().getListOfShips().) {
+                if (ship.equals(SquareStatus.HIT)) {
+
+                }
+            }
+        }
+    }
+    //TODO
+//    public void changeStatusToSunk(Player player) {
+//        for (Ship ship : player.getEnemy().()) {
+//            if (!ship.isShipAlive()) {
+//                ship.getShipSquares().forEach(s -> s.setSquareStatus(SquareStatus.SUNK));
+//            }
+//        }
+//    }
+//    public void changeStatusOnOcean(Player player){
+//        player.getEnemy().getPlayerBoard().getOcean().
+//    }
 }

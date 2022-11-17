@@ -9,7 +9,6 @@ import java.util.List;
 public class Ship {
 private List<Square> shipSquares; //TODO przypisywanie pól do Shipa w momencie ustawiania na boardzie
     //zwracanie statku w momencie  trafienia w jakiekolwiek jego pole done
-
     public Ship() {
         shipSquares = new ArrayList<>();
     }
@@ -50,4 +49,5 @@ private List<Square> shipSquares; //TODO przypisywanie pól do Shipa w momencie 
                 "shipSquares=" + shipSquares +
                 '}';
     }
+
 }
