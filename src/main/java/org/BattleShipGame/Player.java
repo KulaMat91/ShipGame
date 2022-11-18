@@ -37,6 +37,10 @@ public class Player {
         return playerBoard;
     }
 
+    public Board getEnemyBoard() {
+        return enemyBoard;
+    }
+
     public void addShipToPlayerList(Ship ship) {
         listOfShips.add(ship);
     }

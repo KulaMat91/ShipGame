@@ -2,6 +2,7 @@ package org.BattleShipGame;
 
 import org.BattleShipGame.Ship.Ship;
 import org.BattleShipGame.Ship.ShipList;
+import org.BattleShipGame.Square.Square;
 import org.BattleShipGame.Square.SquareStatus;
 
 public class Game {
@@ -42,7 +43,15 @@ public class Game {
         Board player1Board = new Board(10);
         player1.setPlayerBoard(player1Board);
         player1.addListOfShips();
-        System.out.println(player1.getPlayerBoard());
+        Player player2 = new Player(Input.getString("Insert Player 1 name: "));
+        Board player2Board = new Board(10);
+        player2.setPlayerBoard(player2Board);
+        player2.addListOfShips();
+        player1Board.deployShips(ShipList.getShips());
+        player2Board.deployShips(ShipList.getShips());
+        player1.setEnemy(player2);
+        player2.setEnemy(player1);
+        shootingPhase(player1);
     }
 
     public static void shootingPhase(Player player) {
@@ -55,14 +64,34 @@ public class Game {
             for (Ship ship : player.getEnemy().getListOfShips()) {
                 shipHit = ship.getShipSquaresByCoordinates(tempCoordinates);
                 if (shipHit != null) {
-
+                    //changing status of the hit square to HIT
+                    shipHit.getShipSquares().stream().findFirst()
+                            .filter(s -> s.getSquareCoordinates().equals(tempCoordinates))
+                            .get().setSquareStatus(SquareStatus.HIT);
                     break;
                 }
             }
             if(shipHit.isShipAlive()){
-                shipHit.
+                //if ship is alive change square on player enemyBoard and enemy playerBoard to HIT
+                player.getEnemyBoard()
+                        .getOcean()[tempCoordinates[0]][tempCoordinates[1]].setSquareStatus(SquareStatus.HIT);
+                player.getEnemy().getPlayerBoard()
+                        .getOcean()[tempCoordinates[0]][tempCoordinates[1]].setSquareStatus(SquareStatus.HIT);
+            } else {
+                //change ship squares status to sunk
+                //change all ship squares to sunk on both boards
+                for (Square square : shipHit.getShipSquares()){
+                    Integer[] squareCoordinates = square.getSquareCoordinates(); // [x,y]
+                    square.setSquareStatus(SquareStatus.SUNK);
+                    player.getEnemyBoard()
+                            .getOcean()[squareCoordinates[0]][squareCoordinates[1]].setSquareStatus(SquareStatus.SUNK);
+                    player.getEnemy().getPlayerBoard()
+                            .getOcean()[squareCoordinates[0]][squareCoordinates[1]].setSquareStatus(SquareStatus.SUNK);
+                }
             }
+            //shootingPhase(player);
         }
+        //next player turn
     }
     //TODO
 //    public void changeStatusToSunk(Player player) {
