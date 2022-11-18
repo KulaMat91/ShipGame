@@ -43,12 +43,10 @@ public class Game {
         Board player1Board = new Board(10);
         player1.setPlayerBoard(player1Board);
         player1.addListOfShips();
-        Player player2 = new Player(Input.getString("Insert Player 1 name: "));
+        Player player2 = new Player(Input.getString("\nInsert Player 2 name: "));
         Board player2Board = new Board(10);
         player2.setPlayerBoard(player2Board);
         player2.addListOfShips();
-        player1Board.deployShips(ShipList.getShips());
-        player2Board.deployShips(ShipList.getShips());
         player1.setEnemy(player2);
         player2.setEnemy(player1);
         shootingPhase(player1);
@@ -62,7 +60,7 @@ public class Game {
             // player getEnemy getPlayerBoard getOcean[][] = character of hit
             // player getEnemy getListOfShips. // osobna metoda
             for (Ship ship : player.getEnemy().getListOfShips()) {
-                shipHit = ship.getShipSquaresByCoordinates(tempCoordinates);
+                shipHit.setShipSquares(ship.getShipSquaresByCoordinates(tempCoordinates).getShipSquares());
                 if (shipHit != null) {
                     //changing status of the hit square to HIT
                     shipHit.getShipSquares().stream().findFirst()
