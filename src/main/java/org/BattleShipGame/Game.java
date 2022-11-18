@@ -48,13 +48,19 @@ public class Game {
     public static void shootingPhase(Player player) {
         Integer[] tempCoordinates = Input.getShotCoordinates();
         if (player.shotCheckIfHit(tempCoordinates)) {
+            Ship shipHit = new Ship();
             // player enemyBoard
             // player getEnemy getPlayerBoard getOcean[][] = character of hit
             // player getEnemy getListOfShips. // osobna metoda
-            for (Ship ship : player.getEnemy().getListOfShips().) {
-                if (ship.equals(SquareStatus.HIT)) {
+            for (Ship ship : player.getEnemy().getListOfShips()) {
+                shipHit = ship.getShipSquaresByCoordinates(tempCoordinates);
+                if (shipHit != null) {
 
+                    break;
                 }
+            }
+            if(shipHit.isShipAlive()){
+                shipHit.
             }
         }
     }
