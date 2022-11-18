@@ -11,7 +11,7 @@ public class Input {
 
     public static String getString(String message) {
         Display.printMessage(message);
-        return scanner.next();
+        return scanner.nextLine();
     }
 
     public static Integer getInt(String message) {
