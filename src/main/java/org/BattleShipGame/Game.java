@@ -7,6 +7,9 @@ import org.BattleShipGame.Square.SquareStatus;
 
 public class Game {
 
+    //TODO upiekszyć kod (entery, komentarzy przy metodach, jawne zastosowanie MVC, zasady SOLID)
+    //TODO pokazać grywalną cześć gry do pokazania
+    //TODO zrobic UML, stan faktyczny kodu
     /*
     1. Battleship.start();
     2. Start gry -> Podanie nicków graczy:

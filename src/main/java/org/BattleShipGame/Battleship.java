@@ -3,7 +3,7 @@ package org.BattleShipGame;
 import org.BattleShipGame.Display;
 
 import java.util.Scanner;
-
+//TODO change class name
 public class Battleship {
 
     public static void start(){

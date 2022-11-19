@@ -98,10 +98,13 @@ public class Board {
 
     public List<Ship> deployShips(LinkedList<ShipType> shipsToDeploy) {
         List<Ship> listOfShips = new ArrayList<>();
+
         while (!shipsToDeploy.isEmpty()) {
             Integer[] coordinates = Input.getCoordinates(shipsToDeploy.get(0));
+
             if (checkIsPlacementOk(coordinates, shipsToDeploy.get(0).shipSize)) {
                 Ship ship = new Ship();
+
                 switch (coordinates[2]) {
                     case 1: // HORIZONTAL
                         for (int i = 0; i < shipsToDeploy.get(0).shipSize; i++) {
@@ -110,6 +113,7 @@ public class Board {
                         }
                         shipsToDeploy.remove(0);
                         break;
+
                     case 0: // VERTICAL
                         for (int i = 0; i < shipsToDeploy.get(0).shipSize; i++) {
                             this.ocean[coordinates[0] + i][coordinates[1]].setSquareStatus(SquareStatus.SHIP);
@@ -117,6 +121,7 @@ public class Board {
                         }
                         shipsToDeploy.remove(0);
                         break;
+
                     default:
                         Display.printMessage("Invalid input");
                         break;

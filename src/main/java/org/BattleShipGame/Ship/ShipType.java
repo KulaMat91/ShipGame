@@ -1,5 +1,6 @@
 package org.BattleShipGame.Ship;
 
+//TODO dziedziczenie statków
 public enum ShipType {
     ONE(1,1),
     TWO(2,0),

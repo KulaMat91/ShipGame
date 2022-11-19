@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 public class ShipList {
 
+    //TODO czemu użyty jest tutaj linked list?
     public static LinkedList<ShipType> getShips(){
         LinkedList<ShipType> shipsToDeploy = new LinkedList<>();
         for (ShipType ship : ShipType.values()){
