@@ -5,6 +5,8 @@ import org.BattleShipGame.Ship.ShipList;
 import org.BattleShipGame.Square.Square;
 import org.BattleShipGame.Square.SquareStatus;
 
+import java.util.Arrays;
+
 public class Game {
 
     //TODO upiekszyć kod (entery, komentarzy przy metodach, jawne zastosowanie MVC, zasady SOLID)
@@ -53,9 +55,15 @@ public class Game {
         player1.setEnemy(player2);
         player2.setEnemy(player1);
         shootingPhase(player1);
+        shootingPhase(player2);
+        shootingPhase(player1);
+        shootingPhase(player2);
+        System.out.println(player1.getPlayerBoard());
+        System.out.println(player2.getPlayerBoard());
     }
 
     public static void shootingPhase(Player player) {
+        Display.printMessage(player.getName() + " turn");
         Integer[] tempCoordinates = Input.getShotCoordinates();
         if (player.shotCheckIfHit(tempCoordinates)) {
             Ship shipHit = new Ship();
@@ -67,7 +75,7 @@ public class Game {
                 if (shipHit != null) {
                     //changing status of the hit square to HIT
                     shipHit.getShipSquares().stream().findFirst()
-                            .filter(s -> s.getSquareCoordinates().equals(tempCoordinates))
+                            .filter(s -> Arrays.equals(s.getSquareCoordinates(), tempCoordinates))
                             .get().setSquareStatus(SquareStatus.HIT);
                     break;
                 }
@@ -90,9 +98,10 @@ public class Game {
                             .getOcean()[squareCoordinates[0]][squareCoordinates[1]].setSquareStatus(SquareStatus.SUNK);
                 }
             }
-            //shootingPhase(player);
+            shootingPhase(player);
         }
         //next player turn
+
     }
     //TODO
 //    public void changeStatusToSunk(Player player) {

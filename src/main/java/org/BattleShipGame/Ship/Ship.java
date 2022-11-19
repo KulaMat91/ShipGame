@@ -4,6 +4,7 @@ import org.BattleShipGame.Square.Square;
 import org.BattleShipGame.Square.SquareStatus;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Ship {
@@ -15,7 +16,7 @@ private List<Square> shipSquares; //TODO przypisywanie pól do Shipa w momencie 
 
     public Ship getShipSquaresByCoordinates(Integer[] coordinates){
         for (Square square: shipSquares) {
-            if (square.getSquareCoordinates().equals(coordinates)){
+            if (Arrays.equals(square.getSquareCoordinates(), coordinates)){
                 return this;
             }
         }
